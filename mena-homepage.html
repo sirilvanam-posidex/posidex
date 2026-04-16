@@ -1,0 +1,1552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Posidex MENA - Master Data Management & AML Solutions for Enterprise</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #612383;
+            --primary-dark: #4a1a63;
+            --secondary: #e9592e;
+            --secondary-dark: #d1471f;
+            --dark: #111322;
+            --text-gray: #5d6c7b;
+            --light-bg: #f5f6f7;
+            --border: #d0d5dd;
+            --white: #ffffff;
+            --success: #059669;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', 'Nunito Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            background: var(--white);
+        }
+
+        /* ==================== NAVIGATION ==================== */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+            padding: 16px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+            margin: 0;
+        }
+
+        .nav-menu a {
+            color: var(--dark);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary);
+        }
+
+        .nav-cta {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 10px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 140px;
+            line-height: 1.2;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: var(--secondary);
+            color: var(--white);
+        }
+
+        .btn-secondary:hover {
+            background: var(--secondary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        /* ==================== HERO CAROUSEL ==================== */
+        .hero {
+            position: relative;
+            height: 680px;
+            background: linear-gradient(135deg, var(--primary) 0%, #8b3fa6 100%);
+            color: var(--white);
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            overflow: hidden;
+            padding-top: 40px;
+        }
+
+        .hero-carousel {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+        }
+
+        .hero-slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+        }
+
+        .hero-content {
+            max-width: 700px;
+            text-align: left;
+            z-index: 10;
+            padding: 0 20px 140px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            gap: 16px;
+            min-height: calc(100% - 160px);
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            line-height: 1.2;
+            margin-bottom: 14px;
+            font-weight: 700;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            margin-bottom: 24px;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 16px;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .hero-industry-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .hero-industry-tag {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 14px;
+            background: rgba(255, 255, 255, 0.16);
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--white);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        .hero .btn {
+            padding: 14px 32px;
+            font-size: 15px;
+        }
+
+        .hero .btn-white {
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        .hero .btn-white:hover {
+            background: #f0f0f0;
+        }
+
+        .hero-review-card {
+            margin: 16px 0 0 0;
+            display: inline-flex;
+            flex-direction: column;
+            gap: 8px;
+            padding: 14px 18px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 16px;
+            max-width: 360px;
+            text-align: left;
+            color: var(--white);
+            align-items: flex-start;
+        }
+
+        .hero-review-card h4 {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 0;
+            letter-spacing: 0.02em;
+        }
+
+        .hero-review-rating {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .hero-review-rating span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .hero-review-rating .stars {
+            color: #fbbf24;
+        }
+
+        .hero-review-callout {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.5;
+        }
+
+        .hero-logos-footer {
+            position: absolute;
+            left: 50%;
+            bottom: 16px;
+            transform: translateX(-50%);
+            width: calc(100% - 40px);
+            max-width: 1080px;
+            overflow: hidden;
+            z-index: 10;
+        }
+
+        .hero-logos-meta {
+            display: block;
+            margin-bottom: 10px;
+            color: rgba(255, 255, 255, 0.72);
+            font-size: 12px;
+            letter-spacing: 0.03em;
+            text-align: center;
+        }
+
+        .hero-logos-track {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+            animation: heroLogoScroll 18s linear infinite;
+            padding-left: 100%;
+        }
+
+        .hero-logo-chip {
+            min-width: 92px;
+            height: 34px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.12);
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 0 14px;
+            white-space: nowrap;
+        }
+
+        @keyframes heroLogoScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Carousel indicators */
+        .carousel-indicators {
+            position: absolute;
+            bottom: 88px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 20;
+        }
+
+        .indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .indicator.active {
+            background: var(--white);
+            width: 30px;
+            border-radius: 5px;
+        }
+
+        /* ==================== CLIENT SLIDESHOW ==================== */
+        .clients-section {
+            background: var(--light-bg);
+            padding: 60px 20px;
+        }
+
+        .clients-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .clients-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .client-count {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .clients-title {
+            font-size: 16px;
+            color: var(--text-gray);
+            font-weight: 500;
+        }
+
+        .clients-logos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+            align-items: center;
+        }
+
+        .client-logo {
+            height: 70px;
+            background: var(--white);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 12px;
+            font-weight: 500;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+        }
+
+        .client-logo:hover {
+            box-shadow: 0 4px 12px rgba(97, 35, 131, 0.15);
+            transform: translateY(-4px);
+        }
+
+        .industry-section {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid var(--border);
+        }
+
+        .industry-label {
+            font-size: 14px;
+            color: var(--text-gray);
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .industry-tags {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .industry-tag {
+            background: var(--white);
+            padding: 10px 20px;
+            border-radius: 24px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--primary);
+            border: 1.5px solid var(--primary);
+            transition: all 0.3s;
+        }
+
+        .industry-tag:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        /* ==================== SECTION DEFAULTS ==================== */
+        section {
+            padding: 80px 20px;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-tag {
+            color: var(--secondary);
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .section-header h2 {
+            font-size: 40px;
+            margin-bottom: 20px;
+            color: var(--dark);
+            line-height: 1.2;
+        }
+
+        .section-header p {
+            font-size: 16px;
+            color: var(--text-gray);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* ==================== MDM OVERVIEW ==================== */
+        .mdm-overview {
+            background: var(--white);
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+            margin-bottom: 60px;
+        }
+
+        .metric-card {
+            background: var(--light-bg);
+            padding: 28px;
+            border-radius: 16px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 1px solid transparent;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 24px rgba(97, 35, 131, 0.1);
+        }
+
+        .metric-value {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 10px;
+            line-height: 1;
+        }
+
+        .metric-label {
+            font-size: 14px;
+            color: var(--dark);
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .metric-description {
+            font-size: 12px;
+            color: var(--text-gray);
+            margin-top: 0;
+            line-height: 1.6;
+        }
+
+        .section-capabilities {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 18px;
+            max-width: 760px;
+        }
+
+        .capability-pill {
+            background: rgba(97, 35, 131, 0.08);
+            color: var(--primary);
+            border-radius: 999px;
+            padding: 8px 14px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .capabilities-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            margin-top: 28px;
+            max-width: none;
+        }
+
+        .capability-card {
+            background: linear-gradient(135deg, rgba(97, 35, 131, 0.08) 0%, rgba(233, 89, 46, 0.05) 100%);
+            border: 1.5px solid rgba(97, 35, 131, 0.15);
+            border-radius: 10px;
+            padding: 20px 14px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .capability-card:hover {
+            border-color: var(--primary);
+            background: linear-gradient(135deg, rgba(97, 35, 131, 0.12) 0%, rgba(233, 89, 46, 0.08) 100%);
+            box-shadow: 0 6px 16px rgba(97, 35, 131, 0.12);
+            transform: translateY(-2px);
+        }
+
+        .capability-card-icon {
+            width: 40px;
+            height: 40px;
+            margin: 0 auto 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 8px;
+            color: var(--white);
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .capability-card-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 6px;
+        }
+
+        .capability-card-description {
+            font-size: 12px;
+            color: var(--text-gray);
+            line-height: 1.4;
+        }
+
+        .mdm-visual {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 36px;
+        }
+
+        .visual-ring {
+            position: relative;
+            width: 100%;
+            max-width: 620px;
+            height: 260px;
+            border-radius: 50%;
+            background: radial-gradient(circle at top left, rgba(229, 89, 46, 0.16), transparent 36%),
+                        radial-gradient(circle at bottom right, rgba(97, 35, 131, 0.3), transparent 40%),
+                        linear-gradient(180deg, #69288f 0%, #8f4aa7 100%);
+            display: grid;
+            place-items: center;
+            box-shadow: 0 24px 60px rgba(97, 35, 131, 0.12);
+            overflow: hidden;
+        }
+
+        .visual-center {
+            text-align: center;
+            color: var(--white);
+        }
+
+        .visual-label {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .visual-subtitle {
+            font-size: 14px;
+            opacity: 0.92;
+        }
+
+        /* ==================== WHY POSIDEX ==================== */
+        .why-posidex {
+            background: var(--light-bg);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .benefit-card {
+            background: var(--white);
+            padding: 36px;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary);
+            transition: all 0.3s;
+        }
+
+        .benefit-card:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            transform: translateY(-4px);
+        }
+
+        .benefit-card h3 {
+            font-size: 18px;
+            margin-bottom: 16px;
+            color: var(--dark);
+        }
+
+        .benefit-card p {
+            font-size: 14px;
+            color: var(--text-gray);
+            line-height: 1.8;
+        }
+
+        /* ==================== BUSINESS IMPACT ==================== */
+        .impact-section {
+            background: var(--white);
+        }
+
+        .impact-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        .impact-stat {
+            padding: 30px;
+            background: var(--light-bg);
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .impact-number {
+            font-size: 40px;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 8px;
+        }
+
+        .impact-label {
+            font-size: 14px;
+            color: var(--dark);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .impact-description {
+            font-size: 13px;
+            color: var(--text-gray);
+        }
+
+        .use-cases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+        }
+
+        .use-case-card {
+            padding: 30px;
+            border: 1.5px solid var(--border);
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .use-case-card:hover {
+            border-color: var(--secondary);
+            background: rgba(233, 89, 46, 0.05);
+        }
+
+        .use-case-icon {
+            font-size: 32px;
+            margin-bottom: 16px;
+        }
+
+        .use-case-card h4 {
+            font-size: 16px;
+            margin-bottom: 12px;
+            color: var(--dark);
+            font-weight: 600;
+        }
+
+        .use-case-card p {
+            font-size: 13px;
+            color: var(--text-gray);
+        }
+
+        /* ==================== CUSTOMER REVIEWS ==================== */
+        .reviews-section {
+            background: var(--light-bg);
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .review-card {
+            background: var(--white);
+            padding: 36px;
+            border-radius: 12px;
+            border-top: 4px solid var(--secondary);
+            transition: all 0.3s;
+        }
+
+        .review-card:hover {
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+            transform: translateY(-4px);
+        }
+
+        .stars {
+            color: #fbbf24;
+            font-size: 14px;
+            margin-bottom: 16px;
+            letter-spacing: 2px;
+        }
+
+        .review-text {
+            font-size: 15px;
+            color: var(--dark);
+            margin-bottom: 24px;
+            font-style: italic;
+            line-height: 1.7;
+        }
+
+        .review-author {
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--dark);
+            margin-bottom: 4px;
+        }
+
+        .review-role {
+            font-size: 13px;
+            color: var(--text-gray);
+        }
+
+        /* ==================== INDUSTRIES ==================== */
+        .industries-section {
+            background: var(--white);
+        }
+
+        .industries-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+        }
+
+        .industry-card {
+            padding: 40px;
+            background: var(--light-bg);
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .industry-card:hover {
+            border-color: var(--primary);
+            background: var(--white);
+            box-shadow: 0 12px 32px rgba(97, 35, 131, 0.12);
+        }
+
+        .industry-icon {
+            font-size: 40px;
+            margin-bottom: 16px;
+        }
+
+        .industry-card h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 8px;
+        }
+
+        .industry-card p {
+            font-size: 13px;
+            color: var(--text-gray);
+        }
+
+        /* ==================== AWARDS & RECOGNITION ==================== */
+        .awards-section {
+            background: var(--light-bg);
+        }
+
+        .awards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+        }
+
+        .award-card {
+            background: var(--white);
+            padding: 36px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+
+        .award-card:hover {
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .award-icon {
+            width: 64px;
+            height: 64px;
+            background: var(--light-bg);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            margin: 0 auto 20px;
+        }
+
+        .award-card h3 {
+            font-size: 16px;
+            margin-bottom: 12px;
+            color: var(--dark);
+            font-weight: 600;
+        }
+
+        .award-card p {
+            font-size: 13px;
+            color: var(--text-gray);
+            line-height: 1.6;
+        }
+
+        /* ==================== CTA SECTION ==================== */
+        .cta-final {
+            background: linear-gradient(135deg, var(--primary) 0%, #8b3fa6 100%);
+            color: var(--white);
+            padding: 80px 20px;
+        }
+
+        .cta-final .section-container {
+            text-align: center;
+        }
+
+        .cta-final h2 {
+            font-size: 44px;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+
+        .cta-final p {
+            font-size: 18px;
+            margin-bottom: 40px;
+            opacity: 0.95;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ==================== FOOTER ==================== */
+        footer {
+            background: var(--dark);
+            color: var(--white);
+            padding: 60px 20px 20px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h4 {
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #b0b5be;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: #8c919c;
+            text-decoration: none;
+            font-size: 13px;
+            display: block;
+            margin-bottom: 12px;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 20px;
+            text-align: center;
+            font-size: 13px;
+            color: #666;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* ==================== RESPONSIVE ==================== */
+        @media (max-width: 768px) {
+            .nav-menu {
+                gap: 20px;
+            }
+
+            .hero {
+                height: 500px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero-subtitle {
+                font-size: 16px;
+            }
+
+            .section-header h2 {
+                font-size: 32px;
+            }
+
+            .clients-logos {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            section {
+                padding: 60px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                padding: 12px 0;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+
+            .nav-cta {
+                flex-direction: column;
+                gap: 8px;
+                width: 100%;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 24px;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .hero .btn {
+                width: 100%;
+            }
+
+            .section-header h2 {
+                font-size: 24px;
+            }
+
+            section {
+                padding: 40px 16px;
+            }
+
+            .clients-logos {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ==================== NAVIGATION ==================== -->
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#" class="logo">Posidex MENA</a>
+            <ul class="nav-menu">
+                <li><a href="#mdm">Products</a></li>
+                <li><a href="#resources">Resources</a></li>
+                <li><a href="#about">About Us</a></li>
+            </ul>
+            <div class="nav-cta">
+                <a href="#demo" class="btn btn-secondary">Request Demo</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ==================== HERO CAROUSEL ==================== -->
+    <section class="hero">
+        <div class="hero-carousel">
+            <!-- Slide 1: Main MDM -->
+            <div class="hero-slide active">
+                <div class="hero-content">
+                    <div class="hero-tag">Master Data Management</div>
+                    <h1>Enterprise-Grade MDM Built for Speed & Accuracy</h1>
+                    <p class="hero-subtitle">10x faster processing. 99.5% accuracy. Real-time customer intelligence.</p>
+                    <div class="hero-review-card">
+                        <h4>Gartner Peer Insights</h4>
+                        <div class="hero-review-rating">
+                            <span class="stars">★★★★★</span>
+                            <span>4.8 rating • 100% recommend</span>
+                        </div>
+                        <div class="hero-review-callout">16 ratings • Posidex Technologies • Data and Analytics</div>
+                    </div>
+                    <div class="hero-cta">
+                        <a href="#mdm" class="btn btn-white">Learn More</a>
+                        <a href="#demo" class="btn btn-secondary">Request Demo</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2: AML Screen -->
+            <div class="hero-slide">
+                <div class="hero-content">
+                    <div class="hero-tag">AML & Compliance</div>
+                    <h1>Global Watchlist Screening for Complete Compliance</h1>
+                    <p class="hero-subtitle">2,100+ watchlists. Real-time alerts. OFAC, UN, PEP coverage.</p>
+                    <div class="hero-cta">
+                        <a href="#aml" class="btn btn-white">Learn More</a>
+                        <a href="#demo" class="btn btn-secondary">Request Demo</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3: PII Data Vault -->
+            <div class="hero-slide">
+                <div class="hero-content">
+                    <div class="hero-tag">PII Data Vault</div>
+                    <h1>Search, Match & Process Encrypted PII Without Decryption</h1>
+                    <p class="hero-subtitle">GDPR, DPDPA & CCPA compliant. Zero data exposure.</p>
+                    <div class="hero-cta">
+                        <a href="#pii" class="btn btn-white">Learn More</a>
+                        <a href="#demo" class="btn btn-secondary">Request Demo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Carousel Indicators -->
+        <div class="carousel-indicators">
+            <span class="indicator active" data-slide="0"></span>
+            <span class="indicator" data-slide="1"></span>
+            <span class="indicator" data-slide="2"></span>
+        </div>
+
+        <div class="hero-logos-footer">
+            <div class="hero-logos-meta">Trusted by largest enterprises for AI/ML-driven real-time customer insights.</div>
+            <div class="hero-logos-track">
+                <div class="hero-logo-chip">Logo</div>
+                <div class="hero-logo-chip">Logo</div>
+                <div class="hero-logo-chip">Logo</div>
+                <div class="hero-logo-chip">Logo</div>
+                <div class="hero-logo-chip">Logo</div>
+                <div class="hero-logo-chip">Logo</div>
+                <div class="hero-logo-chip">Logo</div>
+                <div class="hero-logo-chip">Logo</div>
+                <div class="hero-logo-chip">Logo</div>
+                <div class="hero-logo-chip">Logo</div>
+                <div class="hero-logo-chip">Logo</div>
+                <div class="hero-logo-chip">Logo</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== MDM OVERVIEW ==================== -->
+    <section class="mdm-overview" id="mdm">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-tag">Prime MDM Powered by AI/ML</div>
+                <h2>Enterprise-Grade Master Data Management</h2>
+                <p>Posidex Prime MDM delivers best-in-class capabilities built on advanced AI/ML models and designed to solve enterprise complexity. Fast deployment, massive scale, privacy-first architecture.</p>
+            </div>
+
+            <div class="capabilities-cards">
+                <div class="capability-card">
+                    <div class="capability-card-icon">α</div>
+                    <div class="capability-card-title">AI/ML Intelligence</div>
+                    <div class="capability-card-description">Trained on 5 billion data points for superior accuracy</div>
+                </div>
+                <div class="capability-card">
+                    <div class="capability-card-icon">⚡</div>
+                    <div class="capability-card-title">Lightning Fast</div>
+                    <div class="capability-card-description">Customer onboarding in 2 seconds</div>
+                </div>
+                <div class="capability-card">
+                    <div class="capability-card-icon">∞</div>
+                    <div class="capability-card-title">Massive Scale</div>
+                    <div class="capability-card-description">Manage 5 billion records in one operation</div>
+                </div>
+                <div class="capability-card">
+                    <div class="capability-card-icon">→</div>
+                    <div class="capability-card-title">Quick Deployment</div>
+                    <div class="capability-card-description">3 months vs. industry standard of 1 year</div>
+                </div>
+                <div class="capability-card">
+                    <div class="capability-card-icon">🔒</div>
+                    <div class="capability-card-title">Privacy First</div>
+                    <div class="capability-card-description">GDPR, DPDPA & data localization ready</div>
+                </div>
+            </div>
+
+            <div class="mdm-visual">
+                <img src="images/prime-mdm-ecosystem.png" alt="Prime MDM Ecosystem" style="max-width: 100%; height: auto;">
+            </div>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-value">60+</div>
+                    <div class="metric-label">Fortune 500 enterprises</div>
+                    <div class="metric-description">Partnering with market leaders</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">10+</div>
+                    <div class="metric-label">years of trusted relationships</div>
+                    <div class="metric-description">Long-term regional engagement</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">2-10x</div>
+                    <div class="metric-label">business growth</div>
+                    <div class="metric-description">Accelerated revenue and customer value</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">3M+</div>
+                    <div class="metric-label">new customers processed daily</div>
+                    <div class="metric-description">Scalable onboarding at enterprise pace</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">99.5%</div>
+                    <div class="metric-label">data accuracy</div>
+                    <div class="metric-description">Trusted records for confident decisions</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">30x</div>
+                    <div class="metric-label">enhanced operational speed</div>
+                    <div class="metric-description">Faster workflows across data teams</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">5B+</div>
+                    <div class="metric-label">customer master records created</div>
+                    <div class="metric-description">Massive scale for enterprise identities</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">75%</div>
+                    <div class="metric-label">reduction in infrastructure cost</div>
+                    <div class="metric-description">Lower total cost of ownership</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">50%</div>
+                    <div class="metric-label">reduction in verification manpower cost</div>
+                    <div class="metric-description">Lean operations with smarter automation</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ==================== WHY POSIDEX ==================== -->
+    <section class="why-posidex">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>Why Choose Posidex</h2>
+                <p>Purpose-built for enterprise needs, not a generic solution adapted from other markets.</p>
+            </div>
+
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <h3>🚀 20+ Years of Deep-Tech Innovation</h3>
+                    <p>Two decades of customer data management expertise specifically built for enterprise complexity and scale.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>💰 Low Total Cost of Ownership</h3>
+                    <p>Minimal infrastructure requirements compared to global MNC competitors. Significantly reduce operational overhead.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>⚙️ Highly Configurable & Integrated</h3>
+                    <p>Seamlessly integrates with your existing systems. Customize to your specific business needs without extensive coding.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>🎯 Purpose-Built for Enterprise</h3>
+                    <p>Not a generic solution. Built specifically for enterprises handling complex, multi-source customer data.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== BUSINESS IMPACT ==================== -->
+    <section class="impact-section">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>Real-World Business Impact</h2>
+                <p>Backed by proven results across enterprises in the region</p>
+            </div>
+
+            <div class="impact-stats">
+                <div class="impact-stat">
+                    <div class="impact-number">750M+</div>
+                    <div class="impact-label">Records Processed</div>
+                    <div class="impact-description">For LIC in a single deployment</div>
+                </div>
+                <div class="impact-stat">
+                    <div class="impact-number">64%</div>
+                    <div class="impact-label">Cost Reduction</div>
+                    <div class="impact-description">vs. industry legacy platforms</div>
+                </div>
+                <div class="impact-stat">
+                    <div class="impact-number">90%</div>
+                    <div class="impact-label">Faster Onboarding</div>
+                    <div class="impact-description">with our automated framework</div>
+                </div>
+            </div>
+
+            <!-- Use Cases -->
+            <div style="margin-top: 60px;">
+                <div class="section-header" style="margin-bottom: 40px;">
+                    <h3 style="font-size: 32px;">Primary Use Cases</h3>
+                </div>
+                <div class="use-cases-grid">
+                    <div class="use-case-card">
+                        <div class="use-case-icon">🔍</div>
+                        <h4>Customer Due Diligence</h4>
+                        <p>Comprehensive KYC/CDD screening with real-time verification and compliance tracking.</p>
+                    </div>
+                    <div class="use-case-card">
+                        <div class="use-case-icon">✨</div>
+                        <h4>Golden Record Creation</h4>
+                        <p>Build single, accurate customer view across all touchpoints and data sources.</p>
+                    </div>
+                    <div class="use-case-card">
+                        <div class="use-case-icon">🎯</div>
+                        <h4>Cross-Sell & Growth</h4>
+                        <p>Identify opportunities with unified customer intelligence and behavioral insights.</p>
+                    </div>
+                    <div class="use-case-card">
+                        <div class="use-case-icon">🛡️</div>
+                        <h4>Fraud Prevention</h4>
+                        <p>Detect fraudulent patterns with AI-powered analysis across customer relationships.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CUSTOMER REVIEWS ==================== -->
+    <section class="reviews-section" id="reviews">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>Trusted by Enterprise Leaders</h2>
+                <p>See what customers across MENA are saying about Posidex</p>
+            </div>
+
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="review-text">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Posidex transformed our customer data management and enabled us to meet regulatory requirements seamlessly."</p>
+                    <div class="review-author">Ahmed Al-Mansouri</div>
+                    <div class="review-role">Leading Private Sector Bank, UAE</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="review-text">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. The platform's speed and accuracy exceeded our expectations. Implementation was faster than anticipated."</p>
+                    <div class="review-author">Fatima Al-Kaabi</div>
+                    <div class="review-role">Government Agency, Saudi Arabia</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="review-text">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Best investment we made in our compliance infrastructure. Highly recommend for enterprises."</p>
+                    <div class="review-author">Mohammed Al-Rashid</div>
+                    <div class="review-role">Telecom Leader, MENA Region</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== INDUSTRIES ==================== -->
+    <section class="industries-section" id="industries">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>Industry Solutions</h2>
+                <p>Tailored expertise across key sectors in the MENA region</p>
+            </div>
+
+            <div class="industries-grid">
+                <div class="industry-card">
+                    <div class="industry-icon">🏦</div>
+                    <h3>Banking & Financial Services</h3>
+                    <p>KYC, AML compliance, customer analytics</p>
+                </div>
+                <div class="industry-card">
+                    <div class="industry-icon">🛡️</div>
+                    <h3>Insurance</h3>
+                    <p>Policy management, fraud detection, claims processing</p>
+                </div>
+                <div class="industry-card">
+                    <div class="industry-icon">🏛️</div>
+                    <h3>Government</h3>
+                    <p>Citizen data management, regulatory compliance</p>
+                </div>
+                <div class="industry-card">
+                    <div class="industry-icon">📱</div>
+                    <h3>Telecom</h3>
+                    <p>Customer analytics, fraud prevention, CRM</p>
+                </div>
+                <div class="industry-card">
+                    <div class="industry-icon">🛍️</div>
+                    <h3>Retail & E-Commerce</h3>
+                    <p>Customer insights, personalization, loyalty programs</p>
+                </div>
+                <div class="industry-card">
+                    <div class="industry-icon">📈</div>
+                    <h3>Capital Markets</h3>
+                    <p>Stock exchange operations, trading data management</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== AWARDS & RECOGNITION ==================== -->
+    <section class="awards-section" id="awards">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>Awards & Recognition</h2>
+                <p>Recognized by industry bodies and governing authorities</p>
+            </div>
+
+            <div class="awards-grid">
+                <div class="award-card">
+                    <div class="award-icon">🏆</div>
+                    <h3>PM Award for Excellence in Governance</h3>
+                    <p>Prime Minister's Award for Excellence in Governance (ITDMS Solution) - Highest recognition</p>
+                </div>
+                <div class="award-card">
+                    <div class="award-icon">🎯</div>
+                    <h3>ITsAP Award for Innovation</h3>
+                    <p>Award for Research & Innovation in Information Technology</p>
+                </div>
+                <div class="award-card">
+                    <div class="award-icon">⭐</div>
+                    <h3>HYSEA 2015 Best Product</h3>
+                    <p>Best Enterprise Software Product Recognition</p>
+                </div>
+                <div class="award-card">
+                    <div class="award-icon">📊</div>
+                    <h3>Silicon Review 2016</h3>
+                    <p>10 Fastest Growing Data Analytics Companies in India</p>
+                </div>
+                <div class="award-card">
+                    <div class="award-icon">📈</div>
+                    <h3>Gartner Recognition</h3>
+                    <p>Mentioned in Gartner and NASSCOM research reports on MDM solutions</p>
+                </div>
+                <div class="award-card">
+                    <div class="award-icon">🔬</div>
+                    <h3>Innovation Leadership</h3>
+                    <p>Recognized for AI/ML innovation in customer data management</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FINAL CTA ==================== -->
+    <section class="cta-final" id="demo">
+        <div class="section-container">
+            <h2>Ready to Transform Your Customer Data Management?</h2>
+            <p>See how Posidex can power your enterprise data strategy. Schedule a personalized demo with our team today.</p>
+            <div class="hero-cta">
+                <a href="#" class="btn btn-white">Start Free Trial</a>
+                <a href="#" class="btn btn-secondary">Request Demo</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Products</h4>
+                <ul>
+                    <li><a href="#">Prime MDM</a></li>
+                    <li><a href="#">AML Screen</a></li>
+                    <li><a href="#">PII Data Vault</a></li>
+                    <li><a href="#">All Products</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Solutions</h4>
+                <ul>
+                    <li><a href="#">By Industry</a></li>
+                    <li><a href="#">By Use Case</a></li>
+                    <li><a href="#">Pricing</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Blog & Resources</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Security & Compliance</a></li>
+                    <li><a href="#">Sitemap</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Posidex Technologies. All rights reserved. | Posidex MENA - Master Data & Compliance Solutions</p>
+        </div>
+    </footer>
+
+    <!-- ==================== CAROUSEL SCRIPT ==================== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.hero-slide');
+            const indicators = document.querySelectorAll('.indicator');
+            let currentSlide = 0;
+            let slideInterval;
+
+            function showSlide(n) {
+                slides.forEach(slide => slide.classList.remove('active'));
+                indicators.forEach(indicator => indicator.classList.remove('active'));
+                currentSlide = (n + slides.length) % slides.length;
+                slides[currentSlide].classList.add('active');
+                indicators[currentSlide].classList.add('active');
+            }
+
+            function startSlideShow() {
+                slideInterval = setInterval(() => {
+                    showSlide(currentSlide + 1);
+                }, 6000);
+            }
+
+            function stopSlideShow() {
+                clearInterval(slideInterval);
+            }
+
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => {
+                    showSlide(index);
+                    stopSlideShow();
+                    startSlideShow();
+                });
+            });
+
+            showSlide(0);
+            startSlideShow();
+        });
+    </script>
+</body>
+</html>
